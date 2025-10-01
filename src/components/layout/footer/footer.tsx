@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Logo } from "../../logo";
-import { formatAndValidateEmail } from "../../../utils/formatAndValidateEmail";
+import { formatAndValidateEmail } from '../../../utils/formatterEmail'
 
 export const Footer = () => {
   const [openProdutos, setOpenProdutos] = useState(false);
