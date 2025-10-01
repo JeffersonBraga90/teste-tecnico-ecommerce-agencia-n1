@@ -43,7 +43,7 @@ export const Footer = () => {
               type="text"
               placeholder="Seu e-mail"
               className={`bg-white rounded-lg py-2 text-gray-700 text-sm pl-2 
-                border ${emailError ? "border-red-500" : "border-white"}`
+                border ${emailError ? "border-red-500" : "border-white"} md:w-xs` 
               }
               value={email}
               onChange={e => {
@@ -52,7 +52,8 @@ export const Footer = () => {
               }}
             />
             <button
-              className="text-blue-600 bg-yellow-500 rounded-lg py-2 px-2 border border-0 cursor-pointer text-sm"
+              className="text-blue-600 bg-yellow-500 rounded-lg py-2 px-2 
+              border border-0 cursor-pointer text-sm md:w-30"
               type="submit"
             >
               Inscrever
@@ -71,9 +72,10 @@ export const Footer = () => {
         </div>
       )}
 
-      <div className="border-t border-white">
-        <ul className="mr-4 ml-4">
-          <li className="mt-6 mb-8">
+      <div className="border-t border-white-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ul className="mr-4 ml-4 md:flex md:justify-between md:mr-auto md:ml-auto md:mt-8 md:mb-8">
+          <li className="mt-6 mb-8 md:w-48">
             <Logo color="#fff" />
             <p className="text-white-200 mt-4 mb-4 text-base font-normal">
               Sua loja especializada em games, consoles e produtos geek.
@@ -181,13 +183,16 @@ export const Footer = () => {
             <ul
               className={`text-white-200 transition-all duration-300 overflow-hidden ${isMobile ? (openContato ? "max-h-96 opacity-100" : "max-h-0 opacity-0") : "max-h-full opacity-100"}`}
             >
-              <li className="py-2">
+              <li className="py-2 flex items-center gap-4">
+                <img src="/icon-phone.svg" alt="Icone Telefone" />
                 <a href="#">(11) 3000-0000</a>
               </li>
-              <li className="py-2">
+              <li className="py-2 flex items-center gap-4">
+                <img src="/icon-envelope.svg" alt="Icone Email" />
                 <a href="#">contato@geekstore.com.br</a>
               </li>
-              <li className="py-2">
+              <li className="py-2 flex items-center gap-4">
+                <img src="/icon-location.svg" alt="Icone Localização" />
                 <span>Rua dos Gamers, 123 <br />
                   São Paulo - SP <br />
                   CEP: 01234-567
@@ -202,25 +207,29 @@ export const Footer = () => {
               </li>
             </ul>
           </li>
-         </ul>
-      </div>
-      <div className="flex flex-col items-center border-t border-white py-4 px-4">
-        <div>
-          <p className="text-white-200 text-sm">© 2024 GeekStore. Todos os direitos reservados.</p>
-        </div>
-        <div className="mt-4">
-          <ul className="flex items-center gap-2 text-white-200 text-sm">
-            <li>
-              <a href="#">Política de Privacidade</a>
-            </li>
-            <li>
-              <a href="#">Termos de Uso</a>
-            </li>
-            <li>
-              <a href="#">Cookies</a>
-            </li>
           </ul>
         </div>
+      </div>
+      <div className="border-t border-white-200 py-4 px-4">
+        <div className="mx-auto max-w-7xl md:px-4 sm:px-6 lg:px-8 
+        flex flex-col items-center  md:flex md:flex-row md:justify-between">
+          <div>
+            <p className="text-white-200 text-sm">© 2024 GeekStore. Todos os direitos reservados.</p>
+          </div>
+          <div className="mt-4 md:mt-0">
+            <ul className="flex items-center gap-2 text-white-200 text-sm md:gap-10">
+              <li>
+                <a href="#">Política de Privacidade</a>
+              </li>
+              <li>
+                <a href="#">Termos de Uso</a>
+              </li>
+              <li>
+                <a href="#">Cookies</a>
+              </li>
+            </ul>
+          </div>
+       </div>
       </div>
     </footer>
   );

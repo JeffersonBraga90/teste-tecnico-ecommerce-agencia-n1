@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
+import { Counter } from "../counter";
 
 type ShelfProps = {
   id: number | string;
@@ -22,11 +23,14 @@ export const Shelf = ({ shelf }: DataShelfProps) => {
   const isMobile = window.innerWidth < 768;
 
   return (
-    <div className="flex flex-col block bg-white rounded-lg py-6 ml-4 mr-4">
+    <div className="flex flex-col block bg-white rounded-lg py-6 ml-4 mr-4
+    mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:m-auto">
       <div className="text-center mb-10 px-2">
         <h2 className="text-blue-700 font-bold text-2xl md:text-3xl pb-4">Produtos em Destaque</h2>
         <p className="text-gray-500 md:text-lg font-normal">Os melhores jogos e acessórios selecionados especialmente para você</p>
       </div>
+
+      <Counter />
 
       {isMobile ? (
         <div className="relative w-full flex flex-col items-center">
@@ -69,7 +73,7 @@ export const Shelf = ({ shelf }: DataShelfProps) => {
                       </div>
                       <button
                         className="flex items-center justify-center w-full bg-blue-500 text-white rounded-lg px-8 py-2 
-                        font-medium text-sm text-center cursor-pointer hover:bg-blue-500 transition-colors mt-4"
+                        font-medium text-sm text-center cursor-pointer mt-4"
                         onClick={() => addToCart({
                           id: item.id,
                           name: item.textShelf,
@@ -110,7 +114,7 @@ export const Shelf = ({ shelf }: DataShelfProps) => {
           </div>
        </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 px-4 md:px-0 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-4 md:px-0 ">
           {shelf.map((item) => (
                   <div key={item.id} className="flex flex-col border-2 border-gray-100 rounded-lg w-full max-w-3xs" >
                     <figure className="relative">
@@ -137,7 +141,7 @@ export const Shelf = ({ shelf }: DataShelfProps) => {
                       </div>
                       <button
                         className="flex items-center justify-center w-full bg-blue-500 text-white rounded-lg px-8 py-2 
-                        font-medium text-sm text-center cursor-pointer hover:bg-blue-500 transition-colors mt-4"
+                        font-medium text-sm text-center cursor-pointer mt-4"
                         onClick={() => addToCart({
                           id: item.id,
                           name: item.textShelf,
@@ -158,8 +162,8 @@ export const Shelf = ({ shelf }: DataShelfProps) => {
       )}
 
       <button className="text-blue-500 border border-blue-500 rounded-lg
-      font-medium text-sm py-2 px-4 mt-6 self-center mb-2
-      ">Ver Todos os Produtos</button>
+      font-medium text-sm py-2 px-4 mt-6 self-center mb-2 md:mt-12 bg-gray-800
+      cursor-pointer">Ver Todos os Produtos</button>
     </div>
   );
 }

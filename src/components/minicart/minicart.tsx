@@ -14,7 +14,7 @@ export const Minicart = () => {
   const CloseIcon = () => (
     <button
       aria-label="Fechar minicart"
-      className="absolute top-4 right-4 z-50 p-2"
+      className="absolute top-4 right-4 z-50 p-2 cursor-pointer"
       onClick={() => setOpen(false)}
     >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -25,20 +25,21 @@ export const Minicart = () => {
 
   return (
     <div
-      className={`fixed ${isMobile ? "top-0 left-0 w-full h-[100vh] z-50" : "top-16 right-0 w-full md:w-96 h-full"} bg-white p-3 overflow-y-auto`}
-      style={isMobile ? { paddingTop: 0 } : {}}
+      className={`fixed ${isMobile ? "top-0 left-0 w-full h-[100vh] z-50" : "top-0 right-0 w-full md:w-96 h-full"} bg-white p-3 overflow-y-auto`}
+      style={isMobile ? { paddingTop: 0 } : { boxShadow: "-8px 0 24px -8px rgba(0,0,0,0.12)" }}
     >
-      <CloseIcon />
+        <CloseIcon />
+      
       {cartItems.length === 0 ? (
         <div className="mt-40 md:mt-60">
-        <div className="text-center text-blue-700 font-black pt-10 text-2xl">
+        <div className="text-center text-blue-700 font-black pt-10 text-2xl md:mt-100">
           <ShoppingCart size={50} className="m-auto block mb-4"/>
           <p>Sua sacola está vazia!</p>
         </div>
       </div>
       ) : (
         <>
-        <div>
+        <div className="md:h-208 md:overflow-hidden">
           <h2 className="text-center text-blue-600 font-bold mt-6 pb-10 text-2xl">Sua Sacola</h2>
           {cartItems.map(item => (
             <div key={item.id} className="flex items-center gap-6 border border-gray-200 rounded p-2 mb-4">
@@ -66,9 +67,7 @@ export const Minicart = () => {
           ))}
         </div>
 
-        <div className={`w-full px-2 py-4 bg-white ${isMobile ? "fixed left-0 bottom-0 z-50" : "sticky bottom-0"}`}
-            style={{ boxShadow: "0 -2px 8px rgba(0,0,0,0.05)" }}
-         >
+        <div className={`w-full px-2 py-4 bg-white ${isMobile ? "fixed left-0 bottom-0 z-50" : "sticky bottom-0"}`}>
           <div className="flex flex-col gap-4 w-full">
             <button className="border border-gray-200 py-2 rounded cursor-pointer text-blue-600">Continuar comprando</button>
             <button className="bg-blue-600 text-white py-2 rounded cursor-pointer">Ir para o checkout</button>

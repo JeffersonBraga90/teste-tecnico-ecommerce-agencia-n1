@@ -39,13 +39,14 @@ export const SeoBlock = () => {
    
 
   return (
-    <div className="bg-white border-t border-gray-200 py-6">
-      <div className="px-4 ">
+    <div className="bg-white border-t border-gray-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mt-10 md:text-center">
         <h2 className="text-blue-700 font-bold text-3xl mb-6">GeekStore - Sua Loja de Games e Produtos Geek</h2>
         <span className="text-gray-500 text-lg font-normal">A maior variedade de jogos, consoles e acessórios com os melhores preços do Brasil</span>
       </div>
 
-      <div className="mt-4 md:flex items-center gap-4 px-4">
+      <div className="mt-10 md:flex items-center gap-16">
         <div>
           <h3 className="text-blue-700 font-bold text-xl mb-4">Os Melhores Jogos e Consoles</h3>
           <p className="text-gray-500 text-base font-normal mb-4">Na GeekStore você encontra os lançamentos mais aguardados para PlayStation 5, 
@@ -73,19 +74,20 @@ export const SeoBlock = () => {
            Produtos únicos para fãs exigentes.
           </p>
         </div>
+        </div>
       </div>
 
       <div className="mt-4 py-10">
         {isMobile ? (
-          <div className="overflow-hidden w-full py-6">
+          <div className="overflow-hidden py-6">
             <ul
-             className="flex transition-transform duration-1000"
+             className="flex justify-center transition-transform duration-1000"
              style={{ transform: `translateX(-${current * 100}vw)`, width: `${metrics.length * 100}vw` }}
             >
               {metrics.map((metric, idx) => (
-                <li key={idx} className="flex gap-4 items-center justify-center text-center text-sm text-gray-500 w-full" style={{width: '100vw'}}>
+                <li key={idx} className="flex items-center justify-center text-center text-sm text-gray-500 w-full m-auto">
                   <div className="text-center flex flex-col justify-center">
-                    <p className="text-2xl font-bold text-blue-700">{metric.value}</p>
+                    <p className="text-2xl font-bold text-blue-600">{metric.value}</p>
                     <span className="text-base text-gray-500">{metric.label}</span>
                  </div>
                 </li>
@@ -93,18 +95,21 @@ export const SeoBlock = () => {
             </ul>
           </div>
         ) : (
-          <ul className="flex gap-8">
-            {metrics.map((m, idx) => (
-              <li key={idx} className="flex flex-col items-center justify-center">
-                <span className="text-2xl font-bold text-blue-700">{m.value}</span>
-                <span className="text-base text-gray-600">{m.label}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:py-8">
+            <ul className="flex justify-between gap-10">
+              {metrics.map((m, idx) => (
+                <li key={idx} className="flex flex-col items-center justify-center">
+                  <span className="text-2xl font-bold text-blue-600">{m.value}</span>
+                  <span className="text-base text-gray-500">{m.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
 
-      <div className="bg-gray-600 rounded-lg py-8 px-4 ml-4 mr-4">
+      <div className="bg-gray-600 rounded-lg py-8 px-4 ml-4 mr-4 md:ml-auto md:mr-auto
+      mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
         <h3 className="text-blue-700 font-bold text-xl text-center mb-6">
           Por que escolher a GeekStore?
         </h3>
@@ -140,6 +145,6 @@ export const SeoBlock = () => {
           </ul>
         </div>
       </div>
-    </div>
+  </div>
   );
 };

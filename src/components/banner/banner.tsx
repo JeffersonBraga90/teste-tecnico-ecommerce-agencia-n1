@@ -6,6 +6,7 @@ type BannerProps = {
   name: string;
   textSmall: string;
   text: string;
+  buttonText: string;
 };
 
 type BannerSliderProps = {
@@ -27,31 +28,30 @@ export const Banner = ({ banners }: BannerSliderProps) => {
 
   return (
     <div
-      className={`relative bg-cover bg-no-repeat w-full h-[460px] md:h-[760px] ${isMobile ? 'bg-center' : 'md:bg-center'}`}
+      className={`relative bg-cover bg-no-repeat w-full h-[460px] md:h-[760px] mt-20 md:mt-46 ${isMobile ? 'bg-center' : 'md:bg-center'}`}
       style={{
         backgroundImage: `url(${banner.image})`
       }}
     >
-      <div className="flex absolute top-50 md:left-1/2 md:-translate-y-1/2 md:right-0">
-        <button onClick={handlePrev} aria-label="Anterior">
+  <div className="flex mt-36 md:mt-70 md:w-full md:justify-center md:items-center
+  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <button onClick={handlePrev} aria-label="Anterior" className="cursor-pointer">
             <ChevronLeft size={30} className="text-white" />
         </button>
-        <div
-          /* className="flex px-6 py-6 md:px-0 md:py-0 flex-col gap-2 md:gap-5 w-full 
-          md:w-90 text-left" */
-        >
-          <div className="text-base md:text-4xl font-normal text-yellow-500">
+        <div className="md:w-full md:px-6">
+          <div className="text-base font-normal text-yellow-500 mb-4">
             <h1>{banner.textSmall}</h1>
           </div>
-          <div className="w-full md:w-90">
+          <div className="w-full">
             <span className="text-white font-bold text-4xl md:text-5xl">
              {banner.name}
             </span>
             <p className="text-white mt-2 md:mt-5 md:text-xl font-normal">{banner.text}</p>
-            <button className="mt-4 bg-yellow-500 rounded-lg text-blue-500 font-medium text-sm py-2 px-4">Ver Consoles</button>
+            <button className="mt-4 bg-yellow-500 rounded-lg text-blue-500 
+            font-medium text-sm py-2 px-4 cursor-pointer md:mt-8">{banner.buttonText}</button>
           </div>
         </div>
-        <button onClick={handleNext} aria-label="Próximo">
+        <button onClick={handleNext} aria-label="Próximo" className="cursor-pointer">
           <ChevronRight size={30} className="text-white"/>
         </button>
       </div>

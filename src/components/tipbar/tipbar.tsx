@@ -40,7 +40,7 @@ export const TipBar = () => {
   }, [isMobile]);
 
   return (
-    <div className="-mt-8">
+    <div className="-mt-8 md:-mt-20">
       {isMobile ? (
         <div className="overflow-hidden w-full border-b border-gray-200 py-6">
           <ul
@@ -59,17 +59,22 @@ export const TipBar = () => {
           </ul>
         </div>
       ) : (
-        <ul className="flex justify-around items-center text-center text-sm md:text-base text-gray-500 border-b border-gray-200 py-6 gap-4 md:gap-0">
-          {tips.map((tip, idx) => (
-            <li key={idx} className="flex flex-col items-center justify-center">
-              <img src={tip.icon} alt={tip.title} />
-              <div>
-                <p className="text-blue-700 font-medium text-base">{tip.title}</p>
-                <span className="text-gray-500 text-sm font-normal">{tip.desc}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="border-b border-gray-200">
+          <ul className="flex justify-between items-center text-center 
+          text-sm md:text-base text-gray-500
+          py-6 gap-4 md:gap-0 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8
+          ">
+            {tips.map((tip, idx) => (
+              <li key={idx} className="flex flex-col items-center justify-center">
+                <img src={tip.icon} alt={tip.title} />
+                <div>
+                  <p className="text-blue-700 font-medium text-base">{tip.title}</p>
+                  <span className="text-gray-500 text-sm font-normal">{tip.desc}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );
