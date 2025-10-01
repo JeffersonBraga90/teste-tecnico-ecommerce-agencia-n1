@@ -8,6 +8,12 @@ type MenuProps = {
 export const Menu = ({ showMenu, setShowMenu }: MenuProps) => {
   const isMobile = window.innerWidth < 768;
 
+   const ArrowIcon = () => (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="inline ml-2">
+      <path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  );
+
   return (
     <div
       className={`bg-white w-full h-screen md:h-auto text-white p-4 space-y-4 rounded md:w-xl 
@@ -50,11 +56,13 @@ export const Menu = ({ showMenu, setShowMenu }: MenuProps) => {
 
         <div className="mt-2">
           <ul className="text-sm">
-            <li className="py-2 text-gray-300  cursor-pointer group">
+            <li className="py-2 text-gray-300  cursor-pointer group bg-gray-800 rounded-lg mb-2 w-24">
               <a className="transition-all duration-200 pl-4" href="#">Jogos</a>
+              <ArrowIcon />
             </li>
-            <li className="py-2 text-gray-300  cursor-pointer group">
+            <li className="py-2 text-gray-300  cursor-pointer group bg-gray-800 rounded-lg w-28">
               <a className="transition-all duration-200 pl-4" href="#">Consoles</a>
+              <ArrowIcon />
             </li>
             <li className="py-2 text-gray-300  cursor-pointer group">
               <a className="transition-all duration-200 pl-4" href="#">PC Gaming</a>

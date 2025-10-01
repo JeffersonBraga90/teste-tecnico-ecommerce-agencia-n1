@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Logo } from "../../logo";
+import { formatAndValidateEmail } from "../../../utils/formatAndValidateEmail";
 
 export const Footer = () => {
   const [openProdutos, setOpenProdutos] = useState(false);
   const [openAtendimento, setOpenAtendimento] = useState(false);
   const [openContato, setOpenContato] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const isMobile = window.innerWidth <= 768;
 
@@ -16,18 +20,57 @@ export const Footer = () => {
 
   return (
     <footer className="w-full bg-blue-500">
-      <div className="text-white flex justify-center flex-col text-center mt-8 mr-4 ml-4 mb-8">
-        <h2 className="text-2xl font-bold mb-4">Fique por dentro das novidades</h2>
-        <span className="text-base text-white-200">Receba primeiro as ofertas exclusivas, lançamentos e promoções especiais</span>
-        <form className="flex justify-center items-center gap-4 mt-6 mb-6">
-          <input
-            type="text"
-            placeholder="Seu e-mail"
-            className="bg-white rounded-lg py-2 text-gray-700 text-sm pl-2 border border-white"
-          />
-          <button className="text-blue-600 bg-yellow-500 rounded-lg py-2 px-2 border border-0 cursor-pointer text-sm">Inscrever</button>
-        </form>
-      </div>
+      {!success ? (
+        <div className="text-white flex justify-center flex-col text-center mt-8 mr-4 ml-4 mb-8">
+          <h2 className="text-2xl font-bold mb-4">Fique por dentro das novidades</h2>
+          <span className="text-base text-white-200">
+            Receba primeiro as ofertas exclusivas, lançamentos e promoções especiais
+          </span>
+          <form
+            className="flex justify-center items-center gap-4 mt-6 mb-6"
+            onSubmit={e => {
+              e.preventDefault();
+              const { isValid } = formatAndValidateEmail(email);
+              if (!isValid) {
+                setEmailError("Digite um e-mail válido.");
+                return;
+              }
+              setEmailError("");
+              setSuccess(true);
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Seu e-mail"
+              className={`bg-white rounded-lg py-2 text-gray-700 text-sm pl-2 
+                border ${emailError ? "border-red-500" : "border-white"}`
+              }
+              value={email}
+              onChange={e => {
+                setEmail(e.target.value);
+                setEmailError("");
+              }}
+            />
+            <button
+              className="text-blue-600 bg-yellow-500 rounded-lg py-2 px-2 border border-0 cursor-pointer text-sm"
+              type="submit"
+            >
+              Inscrever
+            </button>
+          </form>
+          {emailError && (
+            <span className="text-red-500 text-xs -mt-4">{emailError}</span>
+          )}
+        </div>
+      ) : (
+        <div className="text-white flex justify-center flex-col text-center mt-8 mr-4 ml-4 mb-8">
+          <h2 className="text-2xl font-bold mb-4">Inscrição feita com sucesso!</h2>
+          <span className="text-base text-white-200">
+            Pronto! Agora você receberá nossas novidades, ofertas e conteúdos exclusivos diretamente no seu e-mail.
+          </span>
+        </div>
+      )}
+
       <div className="border-t border-white">
         <ul className="mr-4 ml-4">
           <li className="mt-6 mb-8">
